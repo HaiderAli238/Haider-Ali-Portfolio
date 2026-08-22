@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haider Ali | Portfolio</title>
+
+    <!-- Favicon / Meta Image (Head tag rules corrected) -->
+    <link rel="icon" type="image/jpeg" href="{% static 'images/haider.jpeg' %}">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        matteBg: "#121212",
+                        cardBg: "#1e1e1e",
+                        accentGold: "#f59e0b",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#121212] text-gray-100 font-sans antialiased selection:bg-[#f59e0b] selection:text-[#121212]">
+
+    {% include 'components/navbar.html' %}
+
+    <main>
+        {% include 'components/hero.html' %}
+        {% include 'components/experience.html' %}
+        {% include 'components/skills.html' %}
+        {% include 'components/services.html' %}
+        {% include 'components/projects.html' %}
+        {% include 'components/contact.html' %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% include 'components/footer.html' %}
+    {% include 'components/back-to-top.html' %}
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

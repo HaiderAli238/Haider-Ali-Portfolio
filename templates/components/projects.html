@@ -1,0 +1,105 @@
+<section id="projects" class="py-16 bg-[#121212] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Heading -->
+    <div class="text-center mb-10">
+      <h2 class="text-4xl md:text-5xl font-black text-white">
+        Featured <span class="text-white drop-shadow-[0_0_12px_#f59e0b]">Work</span>
+      </h2>
+      <p class="text-gray-400 mt-4 text-sm">Explore some of my recent projects in detail.</p>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <button onclick="filterProjects('all')" class="project-btn active px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-[#f59e0b] text-black shadow-[0_0_20px_rgba(245,158,11,0.4)]" data-filter="all">
+        All
+      </button>
+      <button onclick="filterProjects('frontend')" class="project-btn px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-white/5 text-gray-400 border border-white/5 hover:border-[#f59e0b]/30" data-filter="frontend">
+        Frontend
+      </button>
+      <button onclick="filterProjects('backend')" class="project-btn px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-white/5 text-gray-400 border border-white/5 hover:border-[#f59e0b]/30" data-filter="backend">
+        Backend
+      </button>
+      <button onclick="filterProjects('fullstack')" class="project-btn px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-white/5 text-gray-400 border border-white/5 hover:border-[#f59e0b]/30" data-filter="fullstack">
+        Fullstack
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for project in projects %}
+      <div class="project-card group relative bg-[#1e1e1e] border border-white/10 rounded-[1.8rem] overflow-hidden hover:border-[#f59e0b]/60 hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 ease-out flex flex-col h-full" data-category="{{ project.category|lower }}">
+        
+        <!-- Image & Category Tag -->
+        <div class="relative h-48 overflow-hidden">
+          <img src="{{ project.image_url }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-transparent to-transparent opacity-80"></div>
+          <div class="absolute top-4 right-4 bg-[#f59e0b] text-black text-[9px] font-black px-3 py-1 rounded-md uppercase">
+            {{ project.category }}
+          </div>
+        </div>
+
+        <!-- Details Container -->
+        <div class="p-6 flex flex-col flex-grow relative z-10">
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#f59e0b] transition-colors">
+            {{ project.title }}
+          </h3>
+          <p class="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-2">
+            {{ project.desc }}
+          </p>
+
+          <!-- Tech List Loop -->
+          <div class="flex flex-wrap gap-2 mt-auto mb-6">
+            {% for item in project.tech %}
+              <span class="text-[9px] font-bold bg-[#f59e0b]/10 text-[#f59e0b] px-2.5 py-1 rounded border border-[#f59e0b]/20">
+                {{ item }}
+              </span>
+            {% endfor %}
+          </div>
+
+          <!-- Bottom Links -->
+          <div class="flex items-center justify-between pt-4 border-t border-white/5">
+            <a href="{{ project.demo }}" class="text-[10px] font-black text-white/40 group-hover:text-[#f59e0b] tracking-[0.2em] transition-all">
+              VIEW PROJECT
+            </a>
+            <div class="flex gap-4">
+              {% if project.github %}
+              <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- Filter Script -->
+<script>
+  function filterProjects(cat) {
+    const buttons = document.querySelectorAll('.project-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    buttons.forEach(function(btn) {
+      if (btn.getAttribute('data-filter') === cat) {
+        btn.className = "project-btn active px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-[#f59e0b] text-black shadow-[0_0_20px_rgba(245,158,11,0.4)]";
+      } else {
+        btn.className = "project-btn px-5 py-2 rounded-full text-[11px] font-black tracking-widest uppercase transition-all bg-white/5 text-gray-400 border border-white/5 hover:border-[#f59e0b]/30";
+      }
+    });
+
+    cards.forEach(function(card) {
+      const category = card.getAttribute('data-category');
+      if (cat === 'all' || category === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>

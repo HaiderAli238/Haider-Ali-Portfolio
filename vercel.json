@@ -4,13 +4,12 @@
     {
       "src": "haider_portfolio_config/wsgi.py",
       "use": "@vercel/python",
-      "config": { 
-        "maxLambdaSize": "15mb", 
-        "runtime": "python3.12",
-        "pipInstall": true
-      }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
     }
   ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "haider_portfolio_config.settings"
+  },
   "routes": [
     {
       "src": "/static/(.*)",

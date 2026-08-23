@@ -133,15 +133,6 @@ def home(request):
                 'live_url': '#'
             },
             {
-                'title': 'SaaS Analytics Dashboard',
-                'category': 'Frontend',
-                'desc': 'Interactive SaaS analytics application providing real-time data visualization, user subscriptions, and API metrics.',
-                'tech': ['Python', 'Django REST Framework', 'React.js', 'Chart.js'],
-                'image_url': 'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800',
-                'github_url': 'https://github.com/HaiderAli238',
-                'live_url': '#'
-            },
-            {
                 'title': 'Secure Auth Engine',
                 'category': 'Backend',
                 'desc': 'Microservice authentication system built with Node.js & Express featuring JWT token rotation, bcrypt encryption, and rate limiting.',

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,3 +138,5 @@ EMAIL_HOST_USER = 'haideralihashmi2308@gmail.com'
 EMAIL_HOST_PASSWORD = 'hbcd cdjm syir aach'  # Use an app password for Gmail
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

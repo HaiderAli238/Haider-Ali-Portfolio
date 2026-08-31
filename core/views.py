@@ -51,16 +51,9 @@ def home(request):
         # EXACT RESUME EXPERIENCES
         'experiences': [
             {
-                'role': 'SEO Expert',
-                'company': 'Axcess',
-                'period': 'April 2025 - May 2026',
-                'desc': 'Executed comprehensive keyword research, technical website audits, on-page structure optimizations, and authority-building link strategies to boost organic traffic and indexability.',
-                'tags': ['Keyword Strategy', 'Technical SEO', 'On-Page/Off-Page', 'Google Search Console']
-            },
-            {
                 'role': 'Python Django Intern',
                 'company': 'CodeXpace',
-                'period': 'April 2025 - July 2025',
+                'period': 'Feb 2025 - May 2025',
                 'desc': 'Developed and maintained web apps using Django & Django REST Framework (DRF), designed SQLite database schemas, and optimized backend query logic.',
                 'tags': ['Python', 'Django', 'Django REST Framework', 'SQLite', 'Git']
             },
